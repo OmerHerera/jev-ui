@@ -1,0 +1,763 @@
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background-color: #eff1e9;
+  background-image:
+    linear-gradient(rgba(30, 58, 50, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 58, 50, 0.035) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.topbar {
+  height: 66px;
+  padding: 0 clamp(20px, 5.2vw, 80px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  background: rgba(251, 252, 247, 0.82);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 750;
+}
+.wordmark-mark {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  background: var(--moss);
+  border-radius: 50%;
+}
+.wordmark-light {
+  color: #879084;
+  font-weight: 450;
+}
+.topbar-meta,
+.edition,
+.section-kicker,
+.prompt-form label,
+.prompt-foot,
+.result-state,
+.surface-eyebrow,
+.clock-label,
+.format-toggle,
+.carousel-controls,
+.city-card-top,
+.city-card-bottom,
+.sync-note,
+.surface-caption,
+.workbench-footer {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0;
+}
+.topbar-meta {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #66746a;
+}
+.signal-dot,
+.pulse-dot,
+.source-dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: #75a76b;
+}
+.edition {
+  color: #7c877d;
+}
+.edition b {
+  margin-left: 8px;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.workbench {
+  width: min(1100px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 49px 0 28px;
+}
+.section-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #7b857b;
+}
+.section-kicker > span:first-child,
+.result-index {
+  color: var(--coral);
+}
+.kicker-line {
+  width: 34px;
+  height: 1px;
+  background: #a9b39f;
+}
+.prompt-row {
+  display: grid;
+  grid-template-columns: minmax(280px, 1.1fr) minmax(340px, 0.9fr);
+  gap: 60px;
+  align-items: end;
+  padding: 20px 0 35px;
+}
+.prompt-row h1 {
+  margin: 0;
+  font-family:
+    "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: clamp(42px, 5.2vw, 67px);
+  line-height: 0.99;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--ink);
+}
+.prompt-form {
+  padding-bottom: 3px;
+}
+.prompt-form label {
+  display: block;
+  margin-bottom: 9px;
+  color: #7a857b;
+}
+.prompt-control {
+  display: flex;
+  align-items: center;
+  height: 57px;
+  padding: 5px 6px 5px 16px;
+  border: 1px solid #bcc6b8;
+  background: var(--paper);
+  box-shadow: 4px 4px 0 rgba(49, 71, 57, 0.08);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.prompt-control:focus-within {
+  border-color: #6d8a62;
+  box-shadow: 4px 4px 0 rgba(49, 71, 57, 0.14);
+}
+.prompt-control input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  color: var(--ink);
+  background: transparent;
+  font-size: 16px;
+}
+.prompt-control input::placeholder {
+  color: #9ba49b;
+}
+.prompt-control button {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: var(--ink);
+  color: white;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.prompt-control button:hover:not(:disabled) {
+  background: #3d5d4e;
+  transform: translateY(-1px);
+}
+.prompt-control button:disabled {
+  opacity: 0.48;
+  cursor: wait;
+}
+.prompt-control button:focus-visible,
+.format-toggle button:focus-visible,
+.carousel-controls button:focus-visible,
+.city-card:focus-visible {
+  outline: 2px solid #537b52;
+  outline-offset: 3px;
+}
+.prompt-foot {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 11px;
+  color: #929c91;
+  font-size: 9px;
+}
+.prompt-foot svg {
+  color: #9b7145;
+}
+
+.result-heading {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #cbd2c8;
+}
+.result-heading > div:first-child {
+  display: flex;
+  align-items: baseline;
+  gap: 13px;
+}
+.result-index {
+  font-family: var(--mono);
+  font-size: 10px;
+}
+.result-heading h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+.result-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #79847b;
+  font-size: 9px;
+}
+.source-dot.jev {
+  background: #5d9762;
+}
+.source-dot.demo {
+  background: #d0924a;
+}
+.pulse-dot {
+  animation: pulse 1.2s ease-in-out infinite;
+}
+@keyframes pulse {
+  50% {
+    opacity: 0.3;
+    transform: scale(0.75);
+  }
+}
+
+.surface-frame {
+  position: relative;
+  min-height: 405px;
+  border: 1px solid #d2d9cf;
+  background: rgba(251, 252, 247, 0.92);
+  box-shadow: 6px 6px 0 rgba(37, 59, 46, 0.06);
+  overflow: hidden;
+}
+.surface-frame::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0 0 auto;
+  height: 5px;
+  content: "";
+  background: linear-gradient(
+    90deg,
+    var(--moss) 0 27%,
+    var(--coral) 27% 48%,
+    var(--blue) 48% 73%,
+    #e4c969 73%
+  );
+}
+.generated-surface {
+  position: relative;
+  z-index: 1;
+  padding: 31px clamp(20px, 4vw, 48px) 14px;
+  animation: arrive 0.38s ease-out both;
+}
+@keyframes arrive {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.clock-widget {
+  max-width: 920px;
+  margin: 0 auto;
+}
+.clock-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.clock-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #637364;
+}
+.clock-label svg {
+  color: #65845c;
+}
+.format-toggle {
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  gap: 2px;
+  background: #eff2e9;
+}
+.format-toggle button {
+  min-width: 39px;
+  padding: 5px 8px;
+  border: 0;
+  color: #818b80;
+  background: transparent;
+  cursor: pointer;
+  font-size: 9px;
+}
+.format-toggle button.selected {
+  color: #fbfcf7;
+  background: #31483b;
+}
+.clock-main {
+  display: flex;
+  min-height: 165px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 23px 2.5% 27px;
+  border-bottom: 1px solid #e0e4dc;
+}
+.local-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.surface-eyebrow {
+  color: #919b8f;
+  font-size: 9px;
+}
+.local-time {
+  margin: 7px 0 0;
+  color: var(--ink);
+  font-family:
+    "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: clamp(48px, 8vw, 83px);
+  line-height: 0.98;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.local-date {
+  margin-top: 10px;
+  color: #59685e;
+  font-size: 13px;
+}
+.timezone-label {
+  margin-top: 5px;
+  color: #969f94;
+  font-family: var(--mono);
+  font-size: 9px;
+}
+.clock-orbit {
+  position: relative;
+  width: 143px;
+  height: 143px;
+  margin-right: 5%;
+  flex: 0 0 143px;
+  display: grid;
+  place-items: center;
+}
+.orbit-ring {
+  position: absolute;
+  border: 1px solid #d4ddce;
+  border-radius: 50%;
+}
+.orbit-ring-outer {
+  inset: 4px;
+  border-style: dashed;
+  animation: orbit 48s linear infinite;
+}
+.orbit-ring-inner {
+  inset: 23px;
+  border-color: #c4d3b4;
+}
+.orbit-center {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #56724d;
+  background: #edf2e5;
+}
+.orbit-point {
+  position: absolute;
+  top: 10px;
+  left: 70px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 0 0 0 4px rgba(229, 115, 88, 0.14);
+}
+.orbit-tick {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #91b5c1;
+}
+.orbit-tick-one {
+  right: 6px;
+  bottom: 46px;
+}
+.orbit-tick-two {
+  left: 29px;
+  bottom: 13px;
+  background: #dbbd53;
+}
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.city-carousel {
+  padding: 20px 2.5% 0;
+}
+.carousel-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 13px;
+}
+.carousel-heading > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.carousel-location {
+  color: var(--ink);
+  font-family:
+    "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 19px;
+}
+.carousel-location > span {
+  color: #99a197;
+  font-family: var(--mono);
+  font-size: 9px;
+}
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #7e897f;
+  font-size: 9px;
+}
+.carousel-controls i {
+  padding: 0 4px;
+  color: #b1b9ad;
+  font-style: normal;
+}
+.carousel-controls button {
+  width: 29px;
+  height: 29px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #d8dfd3;
+  color: #53695a;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.carousel-controls button:hover {
+  background: #e8eee0;
+}
+.city-track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+}
+.city-card {
+  min-width: 0;
+  min-height: 91px;
+  padding: 11px 12px 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #e0e5dc;
+  text-align: left;
+  background: #f5f7f0;
+  cursor: pointer;
+  transition:
+    border-color 0.18s,
+    transform 0.18s,
+    background 0.18s;
+}
+.city-card:hover {
+  transform: translateY(-2px);
+  border-color: #b4c3aa;
+}
+.city-card.active {
+  border-color: #a8b99b;
+  background: #edf2e6;
+}
+.city-card-top,
+.city-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  color: #8c978d;
+  font-size: 8px;
+}
+.city-card-top > span:first-child {
+  color: #5b6d5d;
+  font-weight: 700;
+}
+.city-card time {
+  overflow: hidden;
+  color: #233b30;
+  font-size: clamp(15px, 2vw, 22px);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.city-card-bottom > span:first-child {
+  overflow: hidden;
+  color: #47584c;
+  font-family:
+    "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.city-card.coral {
+  border-top: 2px solid var(--coral);
+}
+.city-card.blue {
+  border-top: 2px solid var(--blue);
+}
+.city-card.moss {
+  border-top: 2px solid var(--moss);
+}
+.city-card.sun {
+  border-top: 2px solid #d6bb51;
+}
+.sync-note {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 15px;
+  color: #9aa397;
+  font-size: 8px;
+}
+.sync-note .signal-dot {
+  width: 6px;
+  height: 6px;
+  flex-basis: 6px;
+}
+.surface-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 16px;
+  color: #a0a89d;
+  font-size: 8px;
+}
+.loading-note,
+.empty-state {
+  min-height: 405px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+}
+.loading-note {
+  flex-direction: row;
+  gap: 10px;
+  color: #68786a;
+  font-size: 13px;
+}
+.empty-state h3 {
+  margin: 13px 0 7px;
+  color: var(--ink);
+  font-family:
+    "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: 27px;
+  font-weight: 400;
+}
+.empty-state p {
+  max-width: 390px;
+  color: #7e897f;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.empty-state .surface-eyebrow {
+  color: #8a968a;
+}
+.is-pending > .generated-surface {
+  opacity: 0.15;
+}
+
+.workbench-footer {
+  min-height: 43px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: #909a8f;
+  font-size: 8px;
+}
+.workbench-footer > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.footer-mark {
+  width: 17px;
+  height: 17px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid #b8c3b1;
+  border-radius: 50%;
+  color: #62755f;
+  font-family: "Iowan Old Style", Georgia, serif;
+  font-size: 11px;
+}
+.footer-divider {
+  color: #c0c7bc;
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    height: 58px;
+    padding-inline: 18px;
+  }
+  .topbar-meta {
+    font-size: 8px;
+  }
+  .edition {
+    display: none;
+  }
+  .workbench {
+    width: calc(100% - 32px);
+    padding-top: 35px;
+  }
+  .prompt-row {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding-top: 16px;
+    padding-bottom: 26px;
+  }
+  .prompt-row h1 {
+    font-size: 49px;
+  }
+  .surface-frame {
+    min-height: 380px;
+  }
+  .generated-surface {
+    padding: 25px 16px 13px;
+  }
+  .clock-main {
+    min-height: 145px;
+    padding: 23px 0;
+  }
+  .clock-orbit {
+    width: 104px;
+    height: 104px;
+    flex-basis: 104px;
+    margin-right: 0;
+  }
+  .orbit-ring-inner {
+    inset: 16px;
+  }
+  .orbit-center {
+    width: 56px;
+    height: 56px;
+  }
+  .orbit-point {
+    top: 5px;
+    left: 50px;
+  }
+  .orbit-tick-one {
+    right: 1px;
+    bottom: 32px;
+  }
+  .orbit-tick-two {
+    left: 19px;
+    bottom: 8px;
+  }
+  .city-carousel {
+    padding-inline: 0;
+  }
+  .city-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .city-card {
+    min-height: 83px;
+  }
+  .sync-note {
+    justify-content: flex-start;
+    font-size: 7px;
+  }
+  .workbench-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding: 12px 0;
+  }
+  .loading-note,
+  .empty-state {
+    min-height: 380px;
+  }
+}
+
+@media (max-width: 390px) {
+  .workbench {
+    width: calc(100% - 24px);
+  }
+  .topbar-meta {
+    gap: 6px;
+    font-size: 7px;
+  }
+  .local-time {
+    font-size: 43px;
+  }
+  .clock-orbit {
+    width: 82px;
+    height: 82px;
+    flex-basis: 82px;
+  }
+  .orbit-center {
+    width: 46px;
+    height: 46px;
+  }
+  .orbit-center svg {
+    width: 19px;
+  }
+  .orbit-point {
+    left: 39px;
+  }
+  .city-card {
+    padding-inline: 8px;
+  }
+  .city-card time {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
