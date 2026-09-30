@@ -75,15 +75,7 @@ function getOffset(date: Date, timeZone: string) {
 export function WorldClockWidget() {
   const now = useCurrentTime();
   const [hour12, setHour12] = useState(true);
-  const [activeIndex, setActiveIndex] = useState(0);
   const localZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-  const activeCity = cities[activeIndex];
-
-  function moveCity(amount: number) {
-    setActiveIndex(
-      (current) => (current + amount + cities.length) % cities.length,
-    );
-  }
 
   return (
     <section className="clock-widget" aria-label="World clock">
@@ -132,6 +124,27 @@ export function WorldClockWidget() {
         </div>
       </div>
 
+      <div className="sync-note">
+        <span className="signal-dot" /> SYNCING WITH ATOMIC CLOCK STANDARDS VIA
+        SYSTEM TIME
+      </div>
+    </section>
+  );
+}
+
+export function RestWorldClockWidget() {
+  const now = useCurrentTime();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [hour12, setHour12] = useState(true);
+  const activeCity = cities[activeIndex];
+
+  function moveCity(amount: number) {
+    setActiveIndex(
+      (current) => (current + amount + cities.length) % cities.length,
+    );
+  }
+  return (
+    <>
       <div className="city-carousel">
         <div className="carousel-heading">
           <div>
@@ -140,24 +153,42 @@ export function WorldClockWidget() {
               {activeCity.name} <span>/ {activeCity.country}</span>
             </span>
           </div>
-          <div className="carousel-controls">
-            <button
-              onClick={() => moveCity(-1)}
-              aria-label="Previous city"
-              title="Previous city"
-            >
-              <ChevronLeft size={17} />
-            </button>
-            <span>
-              {String(activeIndex + 1).padStart(2, "0")} <i>/</i> 04
-            </span>
-            <button
-              onClick={() => moveCity(1)}
-              aria-label="Next city"
-              title="Next city"
-            >
-              <ChevronRight size={17} />
-            </button>
+          <div className="city-tools">
+            <div className="format-toggle" role="group" aria-label="Time format">
+              <button
+                className={hour12 ? "selected" : ""}
+                onClick={() => setHour12(true)}
+                aria-pressed={hour12}
+              >
+                12H
+              </button>
+              <button
+                className={!hour12 ? "selected" : ""}
+                onClick={() => setHour12(false)}
+                aria-pressed={!hour12}
+              >
+                24H
+              </button>
+            </div>
+            <div className="carousel-controls">
+              <button
+                onClick={() => moveCity(-1)}
+                aria-label="Previous city"
+                title="Previous city"
+              >
+                <ChevronLeft size={17} />
+              </button>
+              <span>
+                {String(activeIndex + 1).padStart(2, "0")} <i>/</i> 04
+              </span>
+              <button
+                onClick={() => moveCity(1)}
+                aria-label="Next city"
+                title="Next city"
+              >
+                <ChevronRight size={17} />
+              </button>
+            </div>
           </div>
         </div>
         <div className="city-track">
@@ -185,10 +216,6 @@ export function WorldClockWidget() {
           ))}
         </div>
       </div>
-      <div className="sync-note">
-        <span className="signal-dot" /> SYNCING WITH ATOMIC CLOCK STANDARDS VIA
-        SYSTEM TIME
-      </div>
-    </section>
+    </>
   );
 }

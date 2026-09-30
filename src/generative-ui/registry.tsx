@@ -1,13 +1,14 @@
-import { WorldClockWidget } from "./widgets";
+import { WorldClockWidget, RestWorldClockWidget } from "./widgets";
 
 export type UiDecision = {
-  component: "world_clock" | "unsupported";
+  component: "world_clock" | "rest_world_clock" | "unsupported";
   confidence: number;
   source: "jev" | "demo";
 };
 
 const components = {
   world_clock: WorldClockWidget,
+  rest_world_clock: RestWorldClockWidget,
   unsupported: UnsupportedWidget,
 } as const;
 

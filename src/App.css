@@ -438,6 +438,11 @@
   flex-direction: column;
   gap: 5px;
 }
+.city-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 .carousel-location {
   color: var(--ink);
   font-family:
